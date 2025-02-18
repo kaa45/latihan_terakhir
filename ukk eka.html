@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalkulator sederhana</title>
+    <link rel="stylesheet" type="text/css"
+        href="">
+</head>
+<style>
+      
+    body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        user-select: none;
+        background: lightgray;}
+    .container {
+        margin-left: 1.0em;
+        padding: 50px;
+        border-radius: 40px;
+        background: skyblue;}
+    .content {
+        width: 100%;
+        margin-top: 1.7em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;}
+    .row button {
+        width: 70px;
+        height: 50px;
+        font-size: 18px;
+        border: none;
+        outline:2px solid black;
+        margin: 5px;
+        border-radius: 15px;
+        background: floralwhite;
+        transition: .1s;}
+    .row button:hover {
+        inset -5px -5px 8px #a5a5a5;
+        background: lightpink;}
+    .display #screen {
+        margin-bottom: .30em;
+        width: auto;
+        height: 70px;
+        font-size: 25px;
+        outline: none;
+        border:2px solid black;
+        text-align: right;
+        padding-right: .5em;
+        background: floralwhite;
+        border-radius: 20px;  
+    }
+    #eval {
+        background: light gray;
+        color: #000;}
+    #ac {
+        background: light gray;
+        color: #000;}
+    #ce {
+        background: light gray;
+        color: #000;}
+</style>
+<body>
+
+<div class="kalkulator">
+  
+ <marquee class="title-marquee"><font size="10"><font color="Black">kalkulator eka</marquee></font></font>
+ 
+    <div class="container">
+        <div class="display">
+            <input id="screen" type="texts" placeholder="0">
+        </div>
+        <div class="btns">
+            <div class="row">
+                <button id="ce" onclick="backspc()">CE</button>
+                <button class="btn">(</button>
+                <button class="btn">)</button>        
+                <button id="ac" onclick="screen.value=''">AC</button>
+            </div>
+            <div class="row">
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">*</button>
+            </div>
+            <div class="row">
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">/</button>
+            </div>
+            <div class="row">
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+            </div>
+            <div class="row">
+                <button class="btn">0</button>
+                <button class="btn">.</button>
+                <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
+                <button class="btn">+</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    var screen = document.querySelector('#screen');
+    var btn = document.querySelectorAll('.btn');
+    for (item of btn) {
+        item.addEventListener('click', (e) => {
+            btntext = e.target.innerText;
+            if (btntext == '×') {
+                btntext = '*';}
+            if (btntext == '÷') {
+                btntext = '/';}
+            screen.value += btntext;
+        });}
+    function fact() {
+        var i, num, f;
+        f = 1
+        num = screen.value;
+        for (i = 1; i <= num; i++) {
+            f = f * i;}
+        i = i - 1;
+        screen.value = f;}
+    function backspc() {
+        screen.value = screen.value.substr(0, screen.value.length - 1);}
+</script>
+</html>
